@@ -110,7 +110,7 @@ const dict = {
   'File Log Level': 262,
   'Minimum log level for log file messages': 263,
   Datum: 264,
-  'Datum-Gateway settings. These are set to mine on OCEAN by default. Modify to switch to another Datum-supporting pool, or to solo mine.': 265,
+  'Datum Gateway settings. Pooled mining uses Blockvase by default. Change the pool host to use another DATUM pool, or to solo mine.': 265,
   'Pool Host': 266,
   'Remote DATUM server host/ip to use for decentralized pooled mining': 267,
   'Pool Port': 268,

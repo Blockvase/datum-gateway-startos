@@ -10,7 +10,7 @@ const inputSpec = InputSpec.of({
     name: i18n('Pool Host'),
     required: false,
     default: null,
-    placeholder: 'datum-beta1.mine.convoy.xyz',
+    placeholder: 'pool.blockvase.com',
     description: i18n(
       'Remote DATUM server host/ip to use for decentralized pooled mining',
     ),
@@ -30,7 +30,7 @@ const inputSpec = InputSpec.of({
     required: false,
     default: null,
     placeholder:
-      'dbb11fa0c2b5403e4f798fa6071bb97e6079d219598366032fdf2ae01962b13c5e66e2be7d6b008f0b2603f3e6f6fc64768fa786c8129c46d3e30a5867734b62',
+      'd89f714cfe7bd9022794b42e2b9b7c196cdd0e16165df0300d788a1b18a86da20654de460ece16e2a2e88d1f8ad316f728c2b5b731d259afd55229375c905439',
     description: i18n(
       'Public key of the DATUM server for initiating encrypted connection. Leave empty to auto-fetch.',
     ),
@@ -85,7 +85,7 @@ export const datumConfig = sdk.Action.withInput(
   async () => ({
     name: i18n('Datum'),
     description: i18n(
-      'Datum-Gateway settings. These are set to mine on OCEAN by default. Modify to switch to another Datum-supporting pool, or to solo mine.',
+      'Datum Gateway settings. Pooled mining uses Blockvase by default. Change the pool host to use another DATUM pool, or to solo mine.',
     ),
     warning: null,
     allowedStatuses: 'any',
@@ -118,7 +118,7 @@ export const datumConfig = sdk.Action.withInput(
       sharing === 'never'
         ? ''
         : sharing === 'require' && !input.pool_host
-          ? 'datum-beta1.mine.convoy.xyz'
+          ? 'pool.blockvase.com'
           : (input.pool_host ?? undefined)
 
     await configJson.merge(effects, {

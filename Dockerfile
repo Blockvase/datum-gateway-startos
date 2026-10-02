@@ -6,8 +6,13 @@ RUN apt update && \
                        netcat-traditional pkg-config git
 
 ADD ./datum_gateway /parent_dir/datum_gateway
+# The submodule's git dir lives in the parent repo. Copy it so the build can
+# stamp the Blockvase commit into git_version.h.
+ADD ./.git/modules/datum_gateway /parent_dir/.git/modules/datum_gateway
 WORKDIR /parent_dir/datum_gateway
-RUN git status
+RUN git config --global --add safe.directory /parent_dir/datum_gateway \
+ && git config --file /parent_dir/.git/modules/datum_gateway/config core.worktree /parent_dir/datum_gateway \
+ && git rev-parse --short HEAD
 RUN cmake . && make
 
 FROM debian:bookworm-slim AS final

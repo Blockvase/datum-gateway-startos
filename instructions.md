@@ -2,14 +2,15 @@
 
 ## Documentation
 
-- [OCEAN Datum documentation](https://ocean.xyz/docs) — upstream guide to DATUM, pool mining on OCEAN, and miner setup.
+- [Blockvase](https://blockvase.com) — Blockvase's DATUM Gateway and pool.
+- [DATUM Gateway source](https://github.com/Blockvase/datum_gateway) — the Blockvase fork this package builds.
 
 ## What you get on StartOS
 
 - A **Web UI** interface (the Datum Gateway dashboard) for monitoring connected miners, hashrate, and share activity.
 - A **Stratum Server** interface that your ASICs point at to receive work.
 - A pre-wired connection to a local **Bitcoin** node (cookie-authenticated, with `blocknotify` set automatically) for block template generation.
-- A default configuration that pool-mines on OCEAN; switchable to another DATUM-supporting pool or solo mining through one action.
+- A default configuration that pool-mines on Blockvase (`pool.blockvase.com:28915`), which is this gateway's built-in default. Switch to another DATUM pool, or to solo mining, through one action.
 
 ## Getting set up
 
@@ -19,7 +20,7 @@ Datum Gateway posts two critical tasks after install. You can't start the servic
 
 1. Install and start **Bitcoin**. Datum Gateway will set its `blocknotify` automatically when the dependency is satisfied.
 2. Run the **Create Password** task. A random admin password is generated and shown once — copy and save it before dismissing. You'll need it to log into the dashboard. If you lose it, run the **Reset Password** action later.
-3. Run the **Config pool address** task and enter the Bitcoin address you want mining rewards paid to. This is the payout address Datum Gateway uses for solo-found blocks, and as the fail-safe when pooling on OCEAN.
+3. Run the **Config pool address** task and enter the Bitcoin address you want mining rewards paid to. This is the payout address Datum Gateway uses for solo-found blocks, and as the fail-safe if the pool is unreachable and pool-only mining is off.
 4. Start Datum Gateway.
 
 ## Using Datum Gateway
@@ -29,7 +30,7 @@ Datum Gateway posts two critical tasks after install. You can't start the servic
 Configure each ASIC with:
 
 - **Stratum URL** — the Stratum Server interface address (host:port of this service; default port is `23334`).
-- **Username** — a Bitcoin address, optionally suffixed with a worker name (e.g. `bc1q…abc.bitaxe1`). With **Pool Pass Full Users** enabled (the default), this is the address OCEAN pays out to.
+- **Username** — a Bitcoin address, optionally suffixed with a worker name (e.g. `bc1q…abc.bitaxe1`). With **Pool Pass Full Users** enabled (the default), this is the address the pool pays out to.
 - **Password** — ignored. Leave blank or set `x`.
 
 If you'd rather use a single payout address for every miner and put only worker names in your ASICs, run the **Datum** action and disable **Pool Pass Full Users**. The Bitcoin address from the **Mining Settings** action is then used for pool payouts.
@@ -41,7 +42,7 @@ Open the **Web UI** interface and log in with the admin password from setup. The
 ### Actions
 
 - **Create Password / Reset Password** — generate a new admin dashboard password (named "Create Password" when none is set, "Reset Password" afterward). The new password is shown once.
-- **Datum** — pool host, port, public key, worker pass-through, and the **Collaborative reward sharing** selector that controls pool vs solo behavior:
+- **Datum** — pool host, port, public key, worker pass-through, and the **Collaborative reward sharing** selector that controls pool vs solo behavior. The empty-host default is Blockvase (`pool.blockvase.com`, port `28915`). Leave **Pool Pubkey** empty to use Blockvase's built-in key, or set another pool's host, port, and key:
   - **require** (default) — pool mining only; if the pool is unreachable, Datum Gateway stops issuing work and your miners fail over to whatever backup pool they're configured with.
   - **prefer** — pool mine when possible, fall back to solo mining if the pool is unavailable.
   - **never** — solo mining only; rewards from any block you find go to the **Bitcoin Address** in the Mining Settings action.
