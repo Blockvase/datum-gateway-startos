@@ -35,7 +35,6 @@ const stratumShape = z.object({
   vardiff_quickdiff_count: optNumber,
   vardiff_quickdiff_delta: optNumber,
   share_stale_seconds: optNumber,
-  fingerprint_miners: optBoolean,
   idle_timeout_no_subscribe: optNumber,
   idle_timeout_no_shares: optNumber,
   idle_timeout_max_last_work: optNumber,

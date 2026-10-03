@@ -95,13 +95,6 @@ const inputSpec = InputSpec.of({
     integer: true,
     min: 0,
   }),
-  fingerprint_miners: Value.toggle({
-    name: i18n('Fingerprint Miners'),
-    default: true,
-    description: i18n(
-      'Attempt to fingerprint miners for better use of coinbase space',
-    ),
-  }),
   username_modifiers: Value.list(
     List.obj(
       {

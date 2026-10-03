@@ -1,9 +1,9 @@
 import { VersionInfo } from '@start9labs/start-sdk'
 
 export const current = VersionInfo.of({
-  version: '#pow:0.4.1:26',
+  version: '#pow:0.4.1:27',
   releaseNotes: {
-    en_US: "Build Blockvase datum_gateway master 3ee90cb523ba37456bd9eaf19b1560bf6635349e. Pooled mining now defaults to pool.blockvase.com."
+    en_US: "Build Blockvase datum_gateway master ce1691739d39916c10a8eb5b8836346c1829e8ea. SHA256d coinbase classes and the NiceHash difficulty floor are removed."
   },
   migrations: {
     up: async ({ effects }) => {},

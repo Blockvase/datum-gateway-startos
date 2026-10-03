@@ -47,7 +47,7 @@ Open the **Web UI** interface and log in with the admin password from setup. The
   - **prefer** — pool mine when possible, fall back to solo mining if the pool is unavailable.
   - **never** — solo mining only; rewards from any block you find go to the **Bitcoin Address** in the Mining Settings action.
 - **Mining Settings** — payout Bitcoin address, primary/secondary coinbase tags, coinbase unique ID.
-- **Stratum Server Settings** — thread and client limits, vardiff tuning, stale-share window, miner fingerprinting, and **Username modifiers** for splitting shares across multiple Bitcoin addresses by percentage (per modifier, splits must sum to 100).
+- **Stratum Server Settings**: thread and client limits, vardiff tuning, stale-share window, and **Username modifiers** for splitting shares across multiple Bitcoin addresses by percentage (per modifier, splits must sum to 100).
 - **Bitcoin RPC settings** — how often Bitcoin sends updated templates.
 - **API** — toggle **Allow Insecure Authentication** if your browser (Safari) refuses to authenticate against the dashboard otherwise.
 - **Logger** — console and file log levels, optional log file path.
